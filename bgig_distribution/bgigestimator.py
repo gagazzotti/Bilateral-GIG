@@ -2,7 +2,7 @@ import numpy as np
 import scipy.special
 import tqdm
 
-from filter import Filter
+from bgig_distribution.filter import Filter
 
 
 class BGIGEstimator:

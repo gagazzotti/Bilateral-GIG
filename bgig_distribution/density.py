@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import scipy
 import tqdm
 
-from filter import Filter
-from gigrn import gigrnd
+from bgig_distribution.filter import Filter
+from bgig_distribution.gigrn import gigrnd
 
 
 class Density:
@@ -85,7 +85,7 @@ class Density:
         x = np.arange(-0.5, 0.5, self.step)
         dens_bgig_cal = self.dens_bgig(x)
         # Plotting the calibrated density
-        plt.style.use(["science", "ieee"])
+        # plt.style.use(["science", "ieee"])
         plt.xlim(-0.1, 0.1)
         plt.plot(x, dens_bgig_cal, label="Calibrated \n BGIG")
         plt.hist(
