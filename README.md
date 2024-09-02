@@ -24,4 +24,4 @@ Enjoy!
 
 ## Credits
 
-The simulation code for a one-sided GIG distribution was took from the following [repository](https://github.com/getian107/PRScsx/tree/master). 
+The simulation code for a one-sided GIG distribution was taken from the following [repository](https://github.com/getian107/PRScsx/tree/master). 
