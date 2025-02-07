@@ -29,14 +29,12 @@ $ python main.py
 Here is an example of simulated BGIG trajectories. 
 
 <p align="center">
-  <img src="images
-  /process_simul_t_5.png" width="40%" style="margin: 2px;">
+  <img src="images/process_simul_t_5.png" width="40%" style="margin: 2px;">
 </p>
 
 The main application is the calibration to SP500 index (see figure below).
 <p align="center">
-  <img src="images
-  /calibrated_density.png" width="40%" style="margin: 2px;">
+  <img src="images/calibrated_density.png" width="40%" style="margin: 2px;">
 </p>
 
 ## Credits
