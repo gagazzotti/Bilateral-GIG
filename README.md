@@ -8,23 +8,34 @@ The code allows to calibrate the BGIG distribution introduced in [*The bilateral
 
 Calibration is done on SP500 index from 2021 to 2023.
 
+
+## Installation
+
+A script is available for an easy creation of the conda environment and compilation of auxiliary functions:
+```bash
+$ source install.bash
+```
+
 ## How to use ? 
-First, provide the data path:
+
+A toy example can be ran with:
+
+```bash
+$ python main.py
 ```
-path = "data/SP500_2021_2024.csv"
-```
-Define the parameters estimator and the density builder with:
-```
-bgig_est = BGIGEstimator(path)
-# essch_est = EsscherEstimator(**bgig_est.params)
-density = Density(filter=bgig_est.filter, **bgig_est.params)
-```
-You can finally either get the calibrated density or the process simulation for $t\in\mathbb{N}$ in the output folder using:
-```
-density.save_calibratd_density()
-density.plot_hist(ndays=5, Nsim=10000)
-```
-Enjoy!
+
+## Results
+
+Here is an example of simulated BGIG trajectories. 
+
+<p align="center">
+  <img src="output/process_simul_t_5.png" width="40%" style="margin: 2px;">
+</p>
+
+The main application is the calibration to SP500 index (see figure below).
+<p align="center">
+  <img src="output/calibrated_density.png" width="40%" style="margin: 2px;">
+</p>
 
 ## Credits
 
