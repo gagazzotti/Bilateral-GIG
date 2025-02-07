@@ -4,8 +4,8 @@ import scienceplots
 import scipy
 import tqdm
 
-from bgig_distribution.filter import Filter
-from bgig_distribution.gigrn import gigrnd
+from src.filter import Filter
+from src.gigrn import gigrnd
 
 plt.style.use("science")
 

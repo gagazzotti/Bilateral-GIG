@@ -2,7 +2,7 @@ import numpy as np
 import scipy.special
 import tqdm
 
-from bgig_distribution.filter import Filter
+from src.filter import Filter
 
 
 class BGIGEstimator:
@@ -53,7 +53,8 @@ class BGIGEstimator:
         return self.R(omega, p) * eta
 
     def c2(self, omega: float, eta: float, p: float):
-        polynom = -self.R(omega, p) ** 2 + (2 * (p + 1) / omega) * self.R(omega, p) + 1
+        polynom = -self.R(omega, p) ** 2 + (2 * (p + 1) /
+                                            omega) * self.R(omega, p) + 1
         return polynom * eta**2
 
     def c3(self, omega: float, eta: float, p: float):
@@ -114,14 +115,16 @@ class BGIGEstimator:
                 return step * self.get_cumulants(omega1, omega2, eta1, eta2, p1, p2, 2)
             case 3:
                 return self.get_cumulants(omega1, omega2, eta1, eta2, p1, p2, 3) / (
-                    self.get_cumulants(omega1, omega2, eta1, eta2, p1, p2, 2) ** (3 / 2)
+                    self.get_cumulants(omega1, omega2, eta1,
+                                       eta2, p1, p2, 2) ** (3 / 2)
                     * step**0.5
                 )
             case 4:
                 return (
                     self.get_cumulants(omega1, omega2, eta1, eta2, p1, p2, 4)
                     / (
-                        self.get_cumulants(omega1, omega2, eta1, eta2, p1, p2, 2) ** 2
+                        self.get_cumulants(
+                            omega1, omega2, eta1, eta2, p1, p2, 2) ** 2
                         * step**0.5
                     )
                     + 3
@@ -158,7 +161,8 @@ class BGIGEstimator:
             omega1, omega2, eta1, eta2, p1, p2, order=4, step=self.step
         )
         return np.power(
-            [equal1 / self.m1, equal2 / self.m2, equal3 / self.m3, equal4 / self.m4], 2
+            [equal1 / self.m1, equal2 / self.m2,
+                equal3 / self.m3, equal4 / self.m4], 2
         ).sum()
 
     def calibrate_bp_pm(self):
@@ -216,12 +220,13 @@ class BGIGEstimator:
             omega1, omega2, eta1, eta2, self.p1, self.p2, 4, 1
         )
         empirical = {1: self.m1, 2: self.m2, 3: self.m3, 4: self.m4}
-        estimate = {1: self.m1_emp, 2: self.m2_emp, 3: self.m3_emp, 4: self.m4_emp}
+        estimate = {1: self.m1_emp, 2: self.m2_emp,
+                    3: self.m3_emp, 4: self.m4_emp}
 
         for order in empirical.keys():
             print(
                 f"Order n°{order}, Absolute Error: {np.format_float_scientific(np.abs(empirical[order] - estimate[order]), 5)}",
-                f"Relative: {np.format_float_scientific(np.abs(np.abs(empirical[order] - estimate[order]) / empirical[order]) , 5)}",
-                f"Empirical moment: {np.format_float_scientific(empirical[order],5)}",
-                f"Estimated moment: {np.format_float_scientific(estimate[order],5)}",
+                f"Relative: {np.format_float_scientific(np.abs(np.abs(empirical[order] - estimate[order]) / empirical[order]), 5)}",
+                f"Empirical moment: {np.format_float_scientific(empirical[order], 5)}",
+                f"Estimated moment: {np.format_float_scientific(estimate[order], 5)}",
             )
