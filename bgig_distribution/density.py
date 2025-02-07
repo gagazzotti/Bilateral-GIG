@@ -1,10 +1,13 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import scienceplots
 import scipy
 import tqdm
 
 from bgig_distribution.filter import Filter
 from bgig_distribution.gigrn import gigrnd
+
+plt.style.use("science")
 
 
 class Density:
@@ -72,7 +75,8 @@ class Density:
         for x in tqdm.tqdm(x_array):
             u = np.arange(-150, 150, 0.01)
             step_u = np.mean(np.diff(u))
-            value_x = (np.exp(-1j * u * x) * self.chf_bgig(u, ndays)).sum() * step_u
+            value_x = (np.exp(-1j * u * x) *
+                       self.chf_bgig(u, ndays)).sum() * step_u
             dens.append(value_x)
         print("Computed!")
         return np.real(dens) / (2 * np.pi)
@@ -86,6 +90,7 @@ class Density:
         dens_bgig_cal = self.dens_bgig(x)
         # Plotting the calibrated density
         # plt.style.use(["science", "ieee"])
+        plt.figure(figsize=(8, 5))
         plt.xlim(-0.1, 0.1)
         plt.plot(x, dens_bgig_cal, label="Calibrated \n BGIG")
         plt.hist(
@@ -129,10 +134,14 @@ class Density:
         x = np.arange(-0.1, 0.1, 1e-3)
         dens_fourier = self.get_dens_fourier(x, ndays)
         values = self.simulate_trajectories(ndays, Nsim)
-        plt.hist(values, density=True, bins=50, label=rf"$t={ndays}$")
-        plt.plot(x, np.real(dens_fourier), linestyle="-")
+        plt.figure(figsize=(8, 5))
+        plt.hist(values, density=True, bins=50,
+                 label=rf"$t={ndays}$ (Simulated histogram)")
+        plt.plot(x, np.real(dens_fourier), linestyle="-",
+                 label="Fourier inversion")
         plt.title(rf"$t={ndays}$")
         plt.ylabel("Density")
         plt.xlabel(r"$x$")
+        plt.legend()
         plt.grid()
         plt.savefig(f"output/process_simul_t_{ndays}")

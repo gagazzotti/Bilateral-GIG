@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "BGIG"
+version = "0.1.0"
+description = "The bilateral generalized inverse Gaussian process with applications to financial modelingThe bilateral generalized inverse Gaussian process with applications to financial modeling."
+authors = [
+    { name = "Gaetano AGAZZOTTI", email = "gaetano.agazzotti@mines-nancy.org" }
+]
+license = { text = "MIT" }
+dependencies = [
+    "contourpy==1.3.0",
+    "cycler==0.12.1",
+    "fonttools==4.53.1",
+    "kiwisolver==1.4.5",
+    "matplotlib==3.9.2",
+    "numpy==2.1.0",
+    "packaging==24.1",
+    "pandas==2.2.2",
+    "pillow==10.4.0",
+    "pyparsing==3.1.4",
+    "python-dateutil==2.9.0.post0",
+    "pytz==2024.1",
+    "SciencePlots==2.1.1",
+    "scipy==1.14.1",
+    "six==1.16.0",
+    "tqdm==4.66.5",
+    "tzdata==2024.1",
+    "uv==0.5.29"
+    ]
+
+# [tool.setuptools]
+# py-modules = ["bgig_dsitribution"]
