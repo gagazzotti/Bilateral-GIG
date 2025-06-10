@@ -1,6 +1,6 @@
-from bgig_distribution.bgigestimator import BGIGEstimator
-from bgig_distribution.esscherestimator import EsscherEstimator
-from bgig_distribution.density import Density
+from src.bgigestimator import BGIGEstimator
+from src.density import Density
+from src.esscherestimator import EsscherEstimator
 
 
 def main():
